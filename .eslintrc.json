@@ -18,7 +18,10 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier"],
+  "plugins": [
+    "react",
+    "prettier"
+  ],
   "rules": {
     "quotes": [
       "error",
@@ -28,9 +31,15 @@
       }
     ],
     "no-shadow": "off",
-    "react/jsx-uses-react": ["off"],
-    "react/react-in-jsx-scope": ["off"],
-    "react/jsx-props-no-spreading": ["warn"],
+    "react/jsx-uses-react": [
+      "off"
+    ],
+    "react/react-in-jsx-scope": [
+      "off"
+    ],
+    "react/jsx-props-no-spreading": [
+      "warn"
+    ],
     "prettier/prettier": [
       "error",
       {
@@ -40,17 +49,42 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
       }
     ],
-    "no-unused-vars": ["off"],
-
+    "no-unused-vars": [
+      "off"
+    ],
     "react/function-component-definition": [
       2,
       {
-        "namedComponents": ["arrow-function", "function-declaration"],
+        "namedComponents": [
+          "arrow-function",
+          "function-declaration"
+        ],
         "unnamedComponents": "arrow-function"
       }
+    ],
+    "react/jsx-fragments": [
+      "off",
+      "syntax"
+    ],
+    "react/prop-types": [
+      "off",
+      {
+        "ignore": [],
+        "customValidators": [],
+        "skipUndeclared": false
+      }
+    ],
+    "import/prefer-default-export": [
+      "off"
+    ],
+    "react/no-array-index-key": [
+      "off"
     ]
   }
 }

@@ -1,0 +1,5 @@
+export const SYSTEM_DEFAULT_THEME = {
+  PRIMARY_COLOR: "#1E4382",
+  WHITE_COLOR: "#ffffff",
+  ICON_BUTTON_BORDER_RADIUS: "3px",
+};
