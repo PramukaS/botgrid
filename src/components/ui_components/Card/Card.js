@@ -7,11 +7,27 @@ import {
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import Button from "../Button/Button";
 import IconButton from "../Button/IconButton";
+import {
+  cardContainer,
+  isSelectedContainer,
+  cardContentStyle,
+  imageStyle,
+  titleStyle,
+  descriptionStyle,
+  inputContainer,
+  inputWrapper,
+  iconButtonWrapper,
+} from "./styles";
 
-function Card({ title, description, imgURL }) {
+function Card({ title, description, imgURL, onClick, selectedCard, index }) {
   const [inputs, setInputs] = useState([""]);
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
 
   const handleInputChange = (event, index) => {
     const newInputs = [...inputs];
@@ -31,42 +47,24 @@ function Card({ title, description, imgURL }) {
     setInputs(newInputs);
   };
 
+  const isSelected = selectedCard === index;
+
   return (
     <ModifiedCard
-      style={{
-        width: 300,
-        height: 400,
-        justifyContent: "center",
-        background: "#D0D0D0",
-      }}
+      style={isSelected ? isSelectedContainer : cardContainer}
+      onClick={handleClick}
     >
-      <CardContent style={{ textAlign: "center" }}>
-        <img
-          src={imgURL}
-          alt="cardImage"
-          style={{ height: 100, windth: 100 }}
-        />
-        <Typography sx={{ fontWeight: "bold", fontSize: 18 }}>
-          {title}
-        </Typography>
-        <Typography sx={{ fontWeight: "medium", fontSize: 16 }}>
-          {description}
-        </Typography>
-        <div>
+      <CardContent style={cardContentStyle}>
+        <img src={imgURL} alt="cardImage" style={imageStyle} />
+        <Typography style={titleStyle}>{title}</Typography>
+        <Typography style={descriptionStyle}>{description}</Typography>
+        <div style={inputContainer}>
           {inputs.map((input, index) => (
             <div className="input-container" key={index}>
               <InputBase
                 size="small"
                 placeholder="Paste link here"
-                style={{
-                  marginTop: 10,
-                  color: "black",
-                  fontSize: 16,
-                  padding: "5px 10px 5px 20px",
-                  borderRadius: 5,
-                  backgroundColor: "white",
-                  width: 200,
-                }}
+                style={inputWrapper}
                 type="text"
                 value={input}
                 onChange={(event) => handleInputChange(event, index)}
@@ -76,7 +74,7 @@ function Card({ title, description, imgURL }) {
                   Icon={AddIcon}
                   classname="primary"
                   onClick={handleAddInput}
-                  style={{ padding: 3 }}
+                  style={iconButtonWrapper}
                 />
               )}
               {index !== 0 && (
@@ -84,7 +82,7 @@ function Card({ title, description, imgURL }) {
                   onClick={() => handleRemoveInput(index)}
                   Icon={RemoveIcon}
                   classname="primary"
-                  style={{ padding: 3 }}
+                  style={iconButtonWrapper}
                 />
               )}
             </div>

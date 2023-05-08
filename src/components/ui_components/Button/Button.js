@@ -25,7 +25,7 @@ function Button({
       onClick={handleClick}
     >
       {imgURL && <img src={imgURL} alt="icon" style={imageIconWrapper} />}
-      <div style={nameWrapper}>{name}</div>
+      <div style={{ ...nameWrapper[classname] }}>{name}</div>
     </ModifiedButton>
   );
 }

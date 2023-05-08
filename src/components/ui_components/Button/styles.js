@@ -6,7 +6,12 @@ export const imageIconWrapper = {
 };
 
 export const nameWrapper = {
-  margin: "0px 10px 0px 10px",
+  primary: {
+    margin: "0px 10px 0px 10px",
+  },
+  back: {
+    margin: "0px",
+  },
 };
 
 export const buttonStyled = {
@@ -16,6 +21,10 @@ export const buttonStyled = {
   },
   secondary: {
     backgroundColor: SYSTEM_DEFAULT_THEME.SECONDARY_COLOR,
+  },
+  back: {
+    background: "none",
+    color: "black",
   },
 };
 

@@ -5,12 +5,19 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
 import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import { Avatar, Badge } from "@mui/material";
+import { Avatar, Badge, Tooltip } from "@mui/material";
 import Button from "../ui_components/Button/Button";
+import {
+  appBarContainer,
+  toolBarContainer,
+  titleContainer,
+  textStyle,
+  actionContainer,
+  iconStyle,
+} from "./styles";
 import { SYSTEM_DEFAULT_THEME } from "../../Theme";
 import SearchBar from "../ui_components/SearchBar/SearchBar";
 import AvatarImage from "../../assets/avatar.jpg";
@@ -37,12 +44,8 @@ const AppBar = styled(MuiAppBar)(({ theme, open }) => ({
 
 const TopNav = ({ open, handleDrawerOpen }) => {
   return (
-    <AppBar
-      position="fixed"
-      open={open}
-      style={{ backgroundColor: SYSTEM_DEFAULT_THEME.WHITE_COLOR }}
-    >
-      <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+    <AppBar position="fixed" open={open} style={appBarContainer}>
+      <Toolbar style={toolBarContainer}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -56,44 +59,29 @@ const TopNav = ({ open, handleDrawerOpen }) => {
         >
           <MenuIcon />
         </IconButton>
-        <div
-          style={{ display: "flex", marginRight: "auto", alignItems: "center" }}
-        >
+        <div style={titleContainer}>
           <img src={BotImage} alt="bot" style={{ marginRight: 20 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="div"
-            style={{
-              color: SYSTEM_DEFAULT_THEME.PRIMARY_COLOR,
-              fontWeight: "bold",
-            }}
-          >
+          <Typography variant="h5" noWrap component="div" style={textStyle}>
             BOT GRID
           </Typography>
         </div>
         <SearchBar />
-        <div
-          style={{
-            display: "inherit",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: 320,
-          }}
-        >
+        <div style={actionContainer}>
           <Button name="Create" classname="primary" imgURL={BotImage2} />
-          <Badge badgeContent={4} color="error">
-            <QuestionAnswerOutlinedIcon
-              style={{ color: SYSTEM_DEFAULT_THEME.PRIMARY_COLOR }}
-            />
-          </Badge>
-          <HelpOutlineOutlinedIcon
-            style={{ color: SYSTEM_DEFAULT_THEME.PRIMARY_COLOR }}
-          />
-          <NotificationsNoneOutlinedIcon
-            style={{ color: SYSTEM_DEFAULT_THEME.PRIMARY_COLOR }}
-          />
-          <Avatar alt="Remy Sharp" src={AvatarImage} />
+          <Tooltip title="Chat with Bot">
+            <Badge badgeContent={4} color="error">
+              <QuestionAnswerOutlinedIcon style={iconStyle} />
+            </Badge>
+          </Tooltip>
+          <Tooltip title="help">
+            <HelpOutlineOutlinedIcon style={iconStyle} />
+          </Tooltip>
+          <Tooltip title="Notification">
+            <NotificationsNoneOutlinedIcon style={iconStyle} />
+          </Tooltip>
+          <Tooltip title="Profile">
+            <Avatar alt="Remy Sharp" src={AvatarImage} />
+          </Tooltip>
         </div>
       </Toolbar>
     </AppBar>

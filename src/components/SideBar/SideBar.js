@@ -12,6 +12,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { SYSTEM_DEFAULT_THEME } from "../../Theme";
 import { mainListItems } from "./ListItem";
+import { listContainer } from "./styles";
 
 const drawerWidth = 200;
 
@@ -41,7 +42,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -74,16 +74,7 @@ const SideBar = ({ open, handleDrawerClose }) => {
         </IconButton>
       </DrawerHeader>
       <Divider />
-      <List
-        component="nav"
-        style={{
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          color: SYSTEM_DEFAULT_THEME.PRIMARY_COLOR,
-        }}
-      >
+      <List component="nav" style={listContainer}>
         <div>{mainListItems}</div>
         <div>
           <ListItemButton style={{ marginTop: "auto" }}>
